@@ -1,0 +1,11 @@
+/* Style des filtres */
+#changelist-filter h2 {
+  font-size: 14px !important;
+  background: #4CAF50 !important;
+  color: white !important;
+  padding: 8px !important;
+}
+
+#changelist-filter ul {
+  padding-left: 0 !important;
+}
