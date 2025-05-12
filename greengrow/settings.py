@@ -34,12 +34,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'dashboard.apps.DashboardConfig',
     'rest_framework',
     'django_admin_listfilter_dropdown',
@@ -84,6 +86,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'greengrow.wsgi.application'
 
+# ASGI application definition
+ASGI_APPLICATION = 'greengrow.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': "channels.layers.InMemoryChannelLayer",
+    }
+}
+# For production, you would typically use Redis:
+# CHANNEL_LAYERS = {
+#    "default": {
+#        "BACKEND": "channels_redis.core.RedisChannelLayer",
+#        "CONFIG": {
+#            "hosts": [("127.0.0.1", 6379)], # Adjust Redis host/port
+#        },
+#    },
+# }
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -173,4 +192,5 @@ ELASTICSEARCH_DSL = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://127.0.0.1:3000",
 ]
